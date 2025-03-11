@@ -78,7 +78,7 @@ export default function Navbar() {
               </div>
             ) : (
               <SignInButton mode="modal">
-                <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-4 font-medium text-xl">
+                <button className="bg-[#2234d1] hover:bg-[#2234d1]/85 text-white px-4 py-4 font-medium text-xl">
                   Connect Wallet
                 </button>
               </SignInButton>

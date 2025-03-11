@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ConvexClientProvider>
-            <div className="min-h-screen flex">
+            <div className="min-h-screen flex bg-black">
               <Sidebar />
               <div className="flex flex-1 flex-col">
                 <Navbar />

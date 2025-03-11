@@ -1,13 +1,57 @@
 "use client";
 
-export default function Home() {
+export default function Stake() {
   return (
     <div className='bg-black text-white p-3 sm:p-5 my-10 sm:my-40 mx-auto max-w-5xl'>
       <div>
-        <div className="flex items-center">
-          <h1 className="text-lg sm:text-xl font-mono">$BLIZZ DETAILS</h1>
-          <div className="ml-3 sm:ml-5 h-px flex-grow border-t border-dashed border-[#1F1F1F]"></div>
+        {/* Header tabs - STAKE and BOND */}
+        <div className="grid grid-cols-2 border-b border-[#1F1F1F]">
+          <div className="py-3 text-center border-b-2 border-blue-600 font-mono bg-linear-to-b from-[#1F1F1F]/10 to-[#2234d1]/7">
+            STAKE
+          </div>
+          <div className="py-3 text-center text-gray-500 font-mono hover:text-gray-300">
+            BOND
+          </div>
         </div>
+
+        {/* Input field and MAX + STAKE buttons */}
+        <div className="mt-6 mb-4">
+          <div className="flex items-center">
+            <div className="flex-grow relative">
+              <input 
+                type="text" 
+                placeholder="Enter Amount" 
+                className="w-full bg-[#0F0F0F] border border-[#1F1F1F] py-3 px-4 text-white placeholder-gray-600"
+              />
+            </div>
+            <button className="bg-[#1F1F1F] hover:bg-[#1F1F1F]/85 px-4 py-3 ml-2 font-mono text-M h-[50px]">
+              MAX
+            </button>
+            <button className="bg-[#2234d1] hover:bg-[#2234d1]/85 px-4 py-3 ml-2 font-mono text-M h-[50px]">
+              STAKE $BLIZZ
+            </button>
+          </div>
+        </div>
+
+        {/* Navigation buttons */}
+        <div className="flex mb-6 border-[#1F1F1F]">
+          <button className="py-2 px-4 font-mono text-xs border bg-[#0F0F0F] border-[#1F1F1F] text-gray-400">
+            STAKE
+          </button>
+          <button className="py-2 px-4 font-mono text-xs text-gray-500 hover:text-gray-300">
+            REWARDS
+          </button>
+          <button className="py-2 px-4 font-mono text-xs text-gray-500 hover:text-gray-300">
+            UNSTAKE
+          </button>
+          <button className="py-2 px-4 font-mono text-xs text-gray-500 hover:text-gray-300">
+            COMPOUND
+          </button>
+        </div>
+
+        <div className="border-t border-dashed border-[#1F1F1F] mt-5"></div>
+
+        
         
         {/* First Row - Responsive grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 mt-3 sm:mt-5">
@@ -18,26 +62,7 @@ export default function Home() {
             {/* Market cap label in the top half, centered vertically */}
             <div className="flex-1 flex items-center p-3 sm:p-4">
               <div className="text-[#868686] text-xs">
-                MARKET CAP 
-              </div>
-            </div>
-            
-            {/* Price in the bottom half, centered vertically */}
-            <div className="flex-1 flex items-center p-2 sm:p-3">
-              <div className="text-base sm:text-xl ml-1 truncate">
-                $385,345,234
-              </div>
-            </div>
-          </div>
-          
-          <div className="border border-[#1F1F1F] bg-[#0F0F0F] p-0 relative h-20 sm:h-24 flex flex-col">
-            {/* Dashed line through the middle of this div */}
-            <div className="absolute left-0 right-0 top-1/2 border-t border-dashed border-[#1F1F1F]"></div>
-            
-            {/* Label in the top half, centered vertically */}
-            <div className="flex-1 flex items-center p-3 sm:p-4">
-              <div className="text-[#868686] text-xs">
-                USD PRICE
+                $BLIZZ BALANCE
               </div>
             </div>
             
@@ -56,14 +81,33 @@ export default function Home() {
             {/* Label in the top half, centered vertically */}
             <div className="flex-1 flex items-center p-3 sm:p-4">
               <div className="text-[#868686] text-xs">
-                MARKET CAP
+                STAKED BALANCE
+              </div>
+            </div>
+            
+            {/* Price in the bottom half, centered vertically */}
+            <div className="flex-1 flex items-center p-2 sm:p-3">
+              <div className="text-base sm:text-xl ml-1 truncate">
+                $4355.43
+              </div>
+            </div>
+          </div>
+          
+          <div className="border border-[#1F1F1F] bg-[#0F0F0F] p-0 relative h-20 sm:h-24 flex flex-col">
+            {/* Dashed line through the middle of this div */}
+            <div className="absolute left-0 right-0 top-1/2 border-t border-dashed border-[#1F1F1F]"></div>
+            
+            {/* Label in the top half, centered vertically */}
+            <div className="flex-1 flex items-center p-3 sm:p-4">
+              <div className="text-[#868686] text-xs">
+                CLAIMABLE REWARDS
               </div>
             </div>
             
             {/* Value in the bottom half, centered vertically */}
             <div className="flex-1 flex items-center p-2 sm:p-3">
               <div className="text-base sm:text-xl ml-1 truncate">
-                Infinity
+              $4355.43
               </div>
             </div>
           </div>
@@ -77,14 +121,14 @@ export default function Home() {
             {/* Market cap label in the top half, centered vertically */}
             <div className="flex-1 flex items-center p-3 sm:p-4">
               <div className="text-[#868686] text-xs">
-                TOTAL STAKED 
+                NEXT EPOCH YIELD 
               </div>
             </div>
             
             {/* Price in the bottom half, centered vertically */}
             <div className="flex-1 flex items-center p-2 sm:p-3">
               <div className="text-base sm:text-xl ml-1 truncate">
-                6543,3454 $BLIZZ
+              $4355.43
               </div>
             </div>
           </div>
@@ -96,14 +140,14 @@ export default function Home() {
             {/* Label in the top half, centered vertically */}
             <div className="flex-1 flex items-center p-3 sm:p-4">
               <div className="text-[#868686] text-xs">
-                TOTAL VALUE LOCKED
+                NEXT EPOCH REWARD
               </div>
             </div>
             
             {/* Price in the bottom half, centered vertically */}
             <div className="flex-1 flex items-center p-2 sm:p-3">
               <div className="text-base sm:text-xl ml-1 truncate">
-                $7654,435,324
+              $4355.43
               </div>
             </div>
           </div>
@@ -115,61 +159,18 @@ export default function Home() {
             {/* Label in the top half, centered vertically */}
             <div className="flex-1 flex items-center p-3 sm:p-4">
               <div className="text-[#868686] text-xs">
-                AVAILABLE OPEN MARKET
+                DAILY EWARDS
               </div>
             </div>
             
             {/* Value in the bottom half, centered vertically */}
             <div className="flex-1 flex items-center p-2 sm:p-3">
               <div className="text-base sm:text-xl ml-1 truncate">
-                23,4325,35 $BLIZZ
+              $4355.43
               </div>
             </div>
           </div> 
        </div>
-
-          {/* THIRD ROW */}
-          
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-3 sm:mt-5">
-          <div className="border border-[#1F1F1F] bg-[#0F0F0F] p-0 relative h-20 sm:h-24 flex flex-col">
-            {/* Dashed line through the middle of this div */}
-            <div className="absolute left-0 right-0 top-1/2 border-t border-dashed border-[#1F1F1F]"></div>
-            
-            {/* Market cap label in the top half, centered vertically */}
-            <div className="flex-1 flex items-center p-3 sm:p-4">
-              <div className="text-[#868686] text-xs">
-                PERCENTAGE STAKED 
-              </div>
-            </div>
-            
-            {/* Price in the bottom half, centered vertically */}
-            <div className="flex-1 flex items-center p-2 sm:p-3">
-              <div className="text-base sm:text-xl ml-1">
-                75,456%
-              </div>
-            </div>
-          </div>
-          
-          <div className="border border-[#1F1F1F] bg-[#0F0F0F] p-0 relative h-20 sm:h-24 flex flex-col">
-            {/* Dashed line through the middle of this div */}
-            <div className="absolute left-0 right-0 top-1/2 border-t border-dashed border-[#1F1F1F]"></div>
-            
-            {/* Label in the top half, centered vertically */}
-            <div className="flex-1 flex items-center p-3 sm:p-4">
-              <div className="text-[#868686] text-xs">
-                BURNED SUPPLY
-              </div>
-            </div>
-            
-            {/* Price in the bottom half, centered vertically */}
-            <div className="flex-1 flex items-center p-2 sm:p-3">
-              <div className="text-base sm:text-xl ml-1">
-                543,345 $BLIZZ
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   );
