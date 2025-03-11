@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { House, Database, CircleDollarSign, MessageCircle, Send, Twitter, BookText, Menu, X } from "lucide-react";
+import { House, Database, CircleDollarSign, Send, Twitter, BookText, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
