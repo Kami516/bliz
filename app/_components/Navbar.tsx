@@ -42,8 +42,8 @@ export default function Navbar() {
     return (
         <div className='flex flex-col items-center w-full z-40'>
             {/* Desktop Navbar (md and larger) */}
-            <div className='hidden md:flex justify-end w-full gap-4 py-4 border-b border-[#1F1F1F] px-4 items-center h-[88px]'>
-                <div className='bg-[#0F0F0F] flex-1 items-center px-5 gap-4 flex-wrap py-1 hidden md:flex text-lg h-[40px] rounded-xl'>
+            <div className='hidden lg:flex justify-end w-full gap-4 py-4 border-b border-[#1F1F1F] px-4 items-center h-[88px]'>
+                <div className='bg-[#0F0F0F] flex-1 items-center px-5 gap-4 flex-wrap py-1 hidden md:flex text-lg h-[40px] rounded-xl text-white'>
                     <span>BLIZZARD v1 Launched</span>
                     <Link 
                         href="https://t.me/yourTelegramGroup" 
@@ -60,7 +60,7 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Navbar (less than md) */}
-            <div className='flex md:hidden justify-end w-full py-4 border-b border-[#1F1F1F] px-4 items-center h-[68px]'>
+            <div className='flex lg:hidden justify-end w-full py-4 border-b border-[#1F1F1F] px-4 items-center h-[68px]'>
                 <div className='h-auto relative'>
                     {/* RainbowKit ConnectButton dla mobile */}
                     <ConnectButton />
