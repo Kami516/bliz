@@ -3,13 +3,11 @@
 
 import { useState, useEffect } from 'react';
 import { useAccount, useBalance, useWriteContract, useWaitForTransactionReceipt } from 'wagmi';
-import { parseEther, formatEther, parseUnits, formatUnits } from 'viem';
+import { parseEther, formatEther, parseUnits } from 'viem';
 import { useConnectModal } from '@rainbow-me/rainbowkit';
 import { useMutation } from 'convex/react';
 import { api } from '@/convex/_generated/api';
 import { FaEthereum } from 'react-icons/fa';
-// import { Input } from '@/components/ui/input';
-// import { Button } from '@/components/ui/button';
 
 // Constants for Uniswap Router and USDT
 // These are for Ethereum mainnet
@@ -81,7 +79,7 @@ export default function Buy() {
   });
 
   // Set up the contract write hook
-  const { writeContract, isPending, isSuccess, data: writeData } = useWriteContract();
+  const { writeContract, isPending, data: writeData } = useWriteContract();
 
   // Wait for transaction receipt
   const { isLoading: isConfirming, isSuccess: isConfirmed } = 
