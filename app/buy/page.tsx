@@ -210,7 +210,7 @@ export default function Buy() {
                 type="number"
                 value={ethAmount}
                 onChange={(e) => setEthAmount(e.target.value)}
-                className="flex-grow bg-transparent outline-none"
+                className="flex-grow bg-transparent outline-none mr-2"
                 placeholder="0.0"
                 min="0"
               />
