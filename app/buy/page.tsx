@@ -12,8 +12,10 @@ import { FaEthereum } from 'react-icons/fa';
 // Constants for Uniswap Router and USDT
 // These are for Ethereum mainnet
 const UNISWAP_V3_ROUTER_ADDRESS = "0xE592427A0AEce92De3Edee1F18E0157C05861564";
-const USDT_ADDRESS = "0xdAC17F958D2ee523a2206206994597C13D831ec7";
-const WETH_ADDRESS = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2";
+// const USDT_ADDRESS = "0xdAC17F958D2ee523a2206206994597C13D831ec7";
+// const WETH_ADDRESS = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2";
+const WETH_ADDRESS = "0x7b79995e5f793A07Bc00c21412e50Ecae098E7f9"; // Sepolia WETH
+const USDT_ADDRESS = "0x6175a8471C2122f778445e7E07A164250a19E661"; // Sepolia USDT
 
 // Simplified Uniswap V3 Router ABI for the exactInputSingle function
 const UNISWAP_ROUTER_ABI = [
@@ -72,6 +74,43 @@ export default function Buy() {
 
   const { address, isConnected } = useAccount();
   const { openConnectModal } = useConnectModal();
+
+  // Add this new state to store the ETH price
+  const [ethPrice, setEthPrice] = useState<number | null>(null);
+  const [isPriceFetching, setIsPriceFetching] = useState<boolean>(false);
+
+  useEffect(() => {
+    const fetchEthPrice = async () => {
+      setIsPriceFetching(true);
+      try {
+        // Using CoinGecko API to get ETH price in USD
+        const response = await fetch(
+          'https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd'
+        );
+        const data = await response.json();
+        if (data && data.ethereum && data.ethereum.usd) {
+          setEthPrice(data.ethereum.usd);
+        } else {
+          // Fallback price if API fails
+          console.warn('Using fallback ETH price');
+          setEthPrice(3000);
+        }
+      } catch (err) {
+        console.error('Failed to fetch ETH price:', err);
+        // Fallback price if API fails
+        setEthPrice(3000);
+      } finally {
+        setIsPriceFetching(false);
+      }
+    };
+  
+    fetchEthPrice();
+    
+    // Refresh price every minute
+    const intervalId = setInterval(fetchEthPrice, 60000);
+    return () => clearInterval(intervalId);
+  }, []);
+  
   
   // Get user's ETH balance
   const { data: ethBalance } = useBalance({
@@ -88,24 +127,23 @@ export default function Buy() {
   // Save transaction details to Convex when successful
   const saveTransaction = useMutation(api.users.updateChainPreference);
 
-  // For a simple price estimation (in a production app, you'd want to use an SDK or API)
-  useEffect(() => {
-    const calculateEstimate = async () => {
-      try {
-        // This is a simplification - in a real app, you'd fetch the actual exchange rate
-        // For example from 0x API, 1inch API, or Uniswap SDK
-        const ethPriceInUsd = 3000; // This would be fetched from a price feed
-        const parsedEthAmount = parseFloat(ethAmount) || 0;
-        const estimatedUsdAmount = (parsedEthAmount * ethPriceInUsd).toFixed(2);
-        setEstimatedUsdt(estimatedUsdAmount);
-      } catch (err) {
-        console.error("Error estimating USDT amount:", err);
-        setEstimatedUsdt('');
-      }
-    };
+// Update the existing calculateEstimate function to use the fetched price
+useEffect(() => {
+  const calculateEstimate = async () => {
+    try {
+      // Use the fetched ETH price instead of hardcoded value
+      const ethPriceInUsd = ethPrice || 3000; // Fallback to 3000 if price is not yet fetched
+      const parsedEthAmount = parseFloat(ethAmount) || 0;
+      const estimatedUsdAmount = (parsedEthAmount * ethPriceInUsd).toFixed(2);
+      setEstimatedUsdt(estimatedUsdAmount);
+    } catch (err) {
+      console.error("Error estimating USDT amount:", err);
+      setEstimatedUsdt('');
+    }
+  };
 
-    calculateEstimate();
-  }, [ethAmount]);
+  calculateEstimate();
+}, [ethAmount, ethPrice]);
 
   // Handle the swap
   const handleSwap = async () => {
