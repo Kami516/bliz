@@ -101,6 +101,7 @@ export default function Buy() {
         setEthPrice(3000);
       } finally {
         setIsPriceFetching(false);
+        console.log(isPriceFetching);
       }
     };
   
