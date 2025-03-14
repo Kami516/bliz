@@ -3,7 +3,7 @@
 import '@rainbow-me/rainbowkit/styles.css';
 import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { WagmiProvider } from 'wagmi';
-import { mainnet, polygon, optimism, arbitrum, base } from 'wagmi/chains';
+import { mainnet, polygon, optimism, arbitrum, base, sepolia } from 'wagmi/chains';
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 // import { http } from 'viem';
 import React from 'react';
@@ -15,7 +15,7 @@ const queryClient = new QueryClient();
 const config = getDefaultConfig({
   appName: 'Blizzard dApp',
   projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || '0c36ab291e36d0e06c3c84a16f65b72b', // Potrzebujesz uzyskać Project ID z WalletConnect Cloud
-  chains: [mainnet, polygon, optimism, arbitrum, base],
+  chains: [mainnet, polygon, optimism, arbitrum, base, sepolia],
   ssr: true,
   // W produkcji powinieneś używać dedykowanych dostawców RPC:
   // transports: {
