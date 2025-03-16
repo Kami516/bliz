@@ -1,11 +1,13 @@
-"use client"
+// components/Navbar.tsx
+'use client';
+
 import React, { useEffect } from 'react';
 import Link from 'next/link';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useAccount } from 'wagmi';
 import { api } from "@/convex/_generated/api";
 import { useMutation } from "convex/react";
 import { Minus } from 'lucide-react';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 export default function Navbar() {
     // Korzystamy z hooka useAccount z wagmi do uzyskania informacji o połączonym portfelu
@@ -54,7 +56,7 @@ export default function Navbar() {
                     </Link>
                 </div>
                 <div className='h-auto relative'>
-                    {/* RainbowKit ConnectButton */}
+                    {/* Niestandardowy przycisk ConnectButton */}
                     <ConnectButton />
                 </div>
             </div>
@@ -62,7 +64,7 @@ export default function Navbar() {
             {/* Mobile Navbar (less than md) */}
             <div className='flex lg:hidden justify-end w-full py-4 border-b border-[#1F1F1F] px-4 items-center h-[68px]'>
                 <div className='h-auto relative'>
-                    {/* RainbowKit ConnectButton dla mobile */}
+                    {/* Niestandardowy przycisk ConnectButton dla mobile */}
                     <ConnectButton />
                 </div>
             </div>

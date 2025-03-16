@@ -41,6 +41,9 @@ importers:
       '@tanstack/react-query':
         specifier: ^5.67.3
         version: 5.67.3(react@19.0.0)
+      blizzard:
+        specifier: 'link:'
+        version: 'link:'
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
